@@ -10,8 +10,8 @@ public class UserTest {
     Company company;
     User user;
 
-    @Test(expected = AssertionError.class)
-    public void printInfo_failure() {
+    @Test
+    public void printInfo_failure(){
         //Given
         company = new Company("Bekkery Street");
         user = new User("Nik", 20, company);
@@ -21,10 +21,19 @@ public class UserTest {
     }
 
     @Test(expected = IncorrectAgeException.class)
-    public void exceptionPrintInfo_failure(){
+    public void exceptionPrintInfo_failure() throws IncorrectAgeException{
         //Given
         company = new Company("Berry Street");
         user = new User("Den", 101, company);
+        //When
+        user.exceptionPrintInfo();
+    }
+
+    @Test
+    public void exceptionPrintInfo_success() throws IncorrectAgeException {
+        //Given
+        company = new Company("Berry Street");
+        user = new User("Den", 12, company);
         //When
         user.exceptionPrintInfo();
     }

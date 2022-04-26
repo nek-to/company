@@ -40,23 +40,13 @@ public class User {
         this.company = company;
     }
 
-    public String exceptionPrintInfo() {
+    public void exceptionPrintInfo() throws IncorrectAgeException {
         if (age > 100) {
-            try {
-                throw new IncorrectAgeException("Your age more then 100 -> " + age);
-            } catch (IncorrectAgeException e) {
-                e.printStackTrace();
-            }
-        }
-        return name + " " + age + " " + company;
+            throw new IncorrectAgeException("Your age can't be more then 100!");
+        } else System.out.println("Age - " + age);
     }
 
-    public String printInfo() {
-        return name + " " + age + " " + company;
-    }
-
-    @Override
-    public String toString() {
-        return name + " " + age + " " + company;
+    public void printInfo() {
+        System.out.println(getName() + " " + getAge() + " " + getCompany());
     }
 }
