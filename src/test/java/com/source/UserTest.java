@@ -11,7 +11,7 @@ public class UserTest {
     User user;
 
     @Test
-    public void printInfo_failure(){
+    public void printInfo_success(){
         //Given
         company = new Company("Bekkery Street");
         user = new User("Nik", 20, company);
@@ -20,20 +20,20 @@ public class UserTest {
         //Then
     }
 
-    @Test(expected = IncorrectAgeException.class)
-    public void exceptionPrintInfo_failure() throws IncorrectAgeException{
-        //Given
-        company = new Company("Berry Street");
-        user = new User("Den", 101, company);
-        //When
-        user.exceptionPrintInfo();
-    }
-
     @Test
     public void exceptionPrintInfo_success() throws IncorrectAgeException {
         //Given
         company = new Company("Berry Street");
         user = new User("Den", 12, company);
+        //When
+        user.exceptionPrintInfo();
+    }
+
+    @Test(expected = IncorrectAgeException.class)
+    public void exceptionPrintInfo_failure() throws IncorrectAgeException{
+        //Given
+        company = new Company("Berry Street");
+        user = new User("Den", 101, company);
         //When
         user.exceptionPrintInfo();
     }
